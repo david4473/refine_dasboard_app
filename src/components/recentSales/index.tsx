@@ -9,6 +9,7 @@ import { IOrder, IOrderStatus } from "../../interfaces";
 export function RecentSales() {
   const { dataGridProps } = useDataGrid<IOrder>({
     resource: "orders",
+    initialPageSize: 5,
   });
 
   const currencyFormatter = new Intl.NumberFormat("en-US", {

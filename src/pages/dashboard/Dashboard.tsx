@@ -17,7 +17,10 @@ const query = {
   end: dayjs().startOf("day"),
 };
 
-const numberFormatter = Intl.NumberFormat("en");
+const formatCurrency = Intl.NumberFormat("en", {
+  style: "currency",
+  currency: "USD",
+});
 
 export function Dashboard({}) {
   const API_URL = useApiUrl();
@@ -64,7 +67,7 @@ export function Dashboard({}) {
               total={revenue?.data.total ?? 0}
               trend={revenue?.data.trend ?? 0}
               target={10000}
-              formatTotal={(value) => `$${value}`}
+              formatTotal={(value) => formatCurrency.format(value)}
             />
           </Grid>
           <Grid item xs>
@@ -96,9 +99,9 @@ export function Dashboard({}) {
                 onChange={handleChange}
                 aria-label="lab API tabs example"
               >
-                <Tab label="Item One" value="1" />
-                <Tab label="Item Two" value="2" />
-                <Tab label="Item Three" value="3" />
+                <Tab label="Revenues" value="1" />
+                <Tab label="Orders" value="2" />
+                <Tab label="Customers" value="3" />
               </TabList>
             </Box>
             <TabPanel value="1">
