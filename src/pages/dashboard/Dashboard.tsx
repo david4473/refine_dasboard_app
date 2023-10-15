@@ -63,17 +63,16 @@ export function Dashboard({}) {
           <Grid item xs>
             <KpiCard
               title="Weekly Revenue"
-              color="blue-300"
               total={revenue?.data.total ?? 0}
               trend={revenue?.data.trend ?? 0}
               target={10000}
               formatTotal={(value) => formatCurrency.format(value)}
+              formatTarget={(value) => formatCurrency.format(value)}
             />
           </Grid>
           <Grid item xs>
             <KpiCard
               title="Weekly Orders"
-              color="blue-300"
               total={orders?.data.total ?? 0}
               trend={orders?.data.trend ?? 0}
               target={150}
@@ -82,7 +81,6 @@ export function Dashboard({}) {
           <Grid item xs>
             <KpiCard
               title="New Customers"
-              color="blue-300"
               total={customers?.data.total ?? 0}
               trend={customers?.data.trend ?? 0}
               target={300}

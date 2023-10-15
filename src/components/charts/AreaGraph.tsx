@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   AreaChart,
   Area,
@@ -10,6 +10,7 @@ import {
 } from "recharts";
 
 import { IAreaGraphProps } from "../../interfaces";
+import { ColorModeContext } from "../../contexts/color-mode";
 
 export const formatDate = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -26,6 +27,8 @@ export const AreaGraph: React.FC<IAreaGraphProps> = ({
     date: formatDate.format(new Date(date)),
     value,
   }));
+
+  const { mode, setMode } = useContext(ColorModeContext);
 
   return (
     <ResponsiveContainer width="99%" aspect={3}>

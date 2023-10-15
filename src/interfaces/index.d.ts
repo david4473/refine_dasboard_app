@@ -7,10 +7,9 @@ export type KpiCardProps = {
   title: string;
   total: number;
   trend: number;
-  icon?: string;
-  color?: string;
   target: number;
   formatTotal?: (value: number) => number | string;
+  formatTarget?: (value: number) => number | string;
 };
 
 export type DeltaType =

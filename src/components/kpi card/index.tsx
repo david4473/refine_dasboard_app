@@ -46,9 +46,9 @@ export default function KpiCard({
   title,
   total,
   trend,
-  icon,
   target,
   formatTotal = (value) => value,
+  formatTarget = (value) => value,
 }: KpiCardProps) {
   const percent = Math.round((trend / total) * 100);
   const color = getColor(percent);
@@ -83,7 +83,7 @@ export default function KpiCard({
       </Box>
       <Box sx={{ flexGrow: 1 }}>
         <CardContent>
-          <span>{`(Target: ${target})`}</span>
+          <span>{`(Target: ${formatTarget(target)})`}</span>
           <LinearProgressWithLabel
             value={arbitraryTarget}
             variant="determinate"
