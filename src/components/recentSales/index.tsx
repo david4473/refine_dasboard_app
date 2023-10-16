@@ -44,38 +44,37 @@ export function RecentSales() {
       {
         field: "id",
         headerName: "ID",
-        width: 20,
-        flex: 0.5,
+        width: 70,
       },
       {
         field: "user.fullName",
         headerName: "Ordered By",
-        flex: 1,
+        width: 200,
         renderCell: ({ row }) => <>{row["user"]["fullName"]}</>,
       },
       {
         field: "amount",
         headerName: "Amount",
         type: "singleSelect",
-        flex: 0.9,
+        width: 150,
         valueFormatter: ({ value }) => currencyFormatter.format(value),
       },
       {
         field: "user.gender",
         headerName: "Gender",
-        flex: 0.6,
+        width: 120,
         renderCell: ({ row }) => <>{row["user"]["gender"]}</>,
       },
       {
         field: "user.gsm",
         headerName: "Tel",
-        flex: 1,
+        width: 170,
         renderCell: ({ row }) => <>{row["user"]["gsm"]}</>,
       },
       {
         field: "status.text",
         headerName: "Status",
-        flex: 0.7,
+        width: 160,
         type: "singleSelect",
         valueOptions: [
           "Cancelled",
@@ -94,25 +93,26 @@ export function RecentSales() {
       {
         field: "adress.text",
         headerName: "Address",
-        flex: 1.7,
+        width: 350,
         headerAlign: "left",
         renderCell: ({ row }) => <>{row["adress"]["text"]}</>,
       },
       {
         field: "createdAt",
         headerName: "Created At",
-        flex: 1.2,
+        width: 200,
       },
     ],
     []
   );
 
   return (
-    <Card sx={{ width: "100%" }} elevation={5}>
+    <Card elevation={5}>
       <CardHeader title="Recent Sales" />
       <DataGrid
         {...dataGridProps}
         columns={columns as any}
+        sx={{ pl: 3 }}
         autoHeight
         pageSizeOptions={[5, 10, 25, 50]}
       />

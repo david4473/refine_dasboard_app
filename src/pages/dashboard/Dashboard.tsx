@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import KpiCard from "../../components/kpi card";
 import { useApiUrl, useCustom } from "@refinedev/core";
 import dayjs from "dayjs";
-import { Box, Grid, Tab, Card, CardHeader } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Tab,
+  Card,
+  CardHeader,
+  Container,
+  styled,
+} from "@mui/material";
 import { TabContext } from "@mui/lab";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
@@ -10,6 +18,15 @@ import { AreaGraph, BarChart } from "../../components/charts";
 import { RecentSales } from "../../components/recentSales";
 
 import { IChart } from "../../interfaces";
+
+const Responsive = styled("div")(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    width: "880px",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "374px",
+  },
+}));
 
 // KPI card code
 const query = {
@@ -122,11 +139,9 @@ export function Dashboard({}) {
           </TabContext>
         </Card>
       </Box>
-      <Box my={5}>
-        <Box>
-          <RecentSales />
-        </Box>
-      </Box>
+      <Responsive>
+        <RecentSales />
+      </Responsive>
     </main>
   );
 }
