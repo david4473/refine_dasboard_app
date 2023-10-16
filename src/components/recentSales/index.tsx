@@ -17,6 +17,14 @@ export function RecentSales() {
     currency: "USD",
   });
 
+  const formatDate = (value: string) => {
+    return new Date(value).toLocaleString("en-US", {
+      month: "short",
+      year: "numeric",
+      day: "numeric",
+    });
+  };
+
   const getColor = (status: IOrderStatus["text"]) => {
     switch (status) {
       case "Cancelled":
@@ -101,6 +109,7 @@ export function RecentSales() {
         field: "createdAt",
         headerName: "Created At",
         width: 200,
+        renderCell: ({ row }) => <>{formatDate(row["createdAt"])}</>,
       },
     ],
     []
