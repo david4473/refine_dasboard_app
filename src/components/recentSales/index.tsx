@@ -1,16 +1,20 @@
 import React from "react";
-import { Card, CardHeader, Chip } from "@mui/material";
+import InputAdornment from "@mui/material/InputAdornment";
+import SearchIcon from "@mui/icons-material/Search";
 
 import { DataGrid, GridColTypeDef } from "@mui/x-data-grid";
 import { useDataGrid } from "@refinedev/mui";
+import { Card, CardHeader, Chip, TextField, Stack } from "@mui/material";
 
+import { getDefaultFilter } from "@refinedev/core";
 import { IOrder, IOrderStatus } from "../../interfaces";
 
 export function RecentSales() {
-  const { dataGridProps } = useDataGrid<IOrder>({
-    resource: "orders",
-    initialPageSize: 5,
-  });
+  const { dataGridProps, setCurrent, setFilters, filters } =
+    useDataGrid<IOrder>({
+      resource: "orders",
+      initialPageSize: 5,
+    });
 
   const currencyFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -95,6 +99,7 @@ export function RecentSales() {
           <Chip
             label={row["status"]["text"]}
             color={getColor(row["status"]["text"])}
+            variant="outlined"
           />
         ),
       },
@@ -117,7 +122,38 @@ export function RecentSales() {
 
   return (
     <Card elevation={5}>
-      <CardHeader title="Recent Sales" />
+      <Stack
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+        paddingRight={2}
+      >
+        <CardHeader title="Recent Sales" />
+        <TextField
+          value={getDefaultFilter("q", filters, "contains")}
+          id="outlined-basic"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setCurrent(1);
+            setFilters([
+              {
+                field: "q",
+                value: e.target.value,
+                operator: "contains",
+              },
+            ]);
+          }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+          size="small"
+          placeholder="Keyword Search"
+        />
+      </Stack>
       <DataGrid
         {...dataGridProps}
         columns={columns as any}
