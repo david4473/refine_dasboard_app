@@ -29,6 +29,8 @@ export const ProductShow: React.FC<IResourceComponentsProps> = () => {
     },
   });
 
+  console.log(record?.images?.url);
+
   return (
     <Show isLoading={isLoading}>
       <Stack gap={1}>

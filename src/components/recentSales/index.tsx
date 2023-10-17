@@ -134,6 +134,12 @@ export function RecentSales() {
           value={getDefaultFilter("q", filters, "contains")}
           id="outlined-basic"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            if (!e.target.value.trim()) {
+              setCurrent(1);
+              setFilters([], "replace");
+              return;
+            }
+
             setCurrent(1);
             setFilters([
               {
