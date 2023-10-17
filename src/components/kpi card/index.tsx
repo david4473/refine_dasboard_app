@@ -66,10 +66,14 @@ export default function KpiCard({
         }}
       >
         <CardContent>
-          <Typography variant="h5" sx={{ fontWeight: 700, mb: 0 }}>
+          <Typography variant="h5" sx={{ fontSize: 17, mb: 0 }}>
             {title}
           </Typography>
-          <Typography variant="h5" sx={{ fontWeight: 700, mb: 0 }}>
+          <Typography
+            variant="h5"
+            sx={{ fontSize: 40, fontWeight: 700, mb: 0 }}
+            color={color == "success" ? "green" : color}
+          >
             {formatTotal(total)}
           </Typography>
         </CardContent>

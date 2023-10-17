@@ -1,6 +1,101 @@
-import { IResourceComponentsProps } from "@refinedev/core";
-import { MuiInferencer } from "@refinedev/inferencer/mui";
+import React from "react";
+import {
+  useDataGrid,
+  EditButton,
+  ShowButton,
+  DeleteButton,
+  List,
+  MarkdownField,
+  DateField,
+} from "@refinedev/mui";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import {
+  IResourceComponentsProps,
+  useTranslate,
+  useMany,
+} from "@refinedev/core";
+import { Checkbox } from "@mui/material";
 
 export const ProductList: React.FC<IResourceComponentsProps> = () => {
-    return <MuiInferencer />;
+  const translate = useTranslate();
+  const { dataGridProps } = useDataGrid();
+
+  const { data: categoryData, isLoading: categoryIsLoading } = useMany({
+    resource: "categories",
+    ids: dataGridProps?.rows?.map((item: any) => item?.category?.id) ?? [],
+    queryOptions: {
+      enabled: !!dataGridProps?.rows,
+    },
+  });
+
+  const columns = React.useMemo<GridColDef[]>(
+    () => [
+      {
+        field: "id",
+        headerName: translate("id"),
+        minWidth: 50,
+      },
+      {
+        field: "name",
+        flex: 1,
+        headerName: translate("Name"),
+        minWidth: 200,
+      },
+      {
+        field: "price",
+        flex: 0.5,
+        headerName: translate("Price"),
+      },
+      {
+        field: "category",
+        flex: 0.5,
+        headerName: translate("Category"),
+        valueGetter: ({ row }) => {
+          const value = row?.category?.id;
+
+          return value;
+        },
+        renderCell: function render({ value }) {
+          return categoryIsLoading ? (
+            <>Loading...</>
+          ) : (
+            categoryData?.data?.find((item) => item.id === value)?.title
+          );
+        },
+      },
+      {
+        field: "description",
+        flex: 1,
+        headerName: translate("Description"),
+        minWidth: 500,
+        renderCell: function render({ value }) {
+          return <MarkdownField value={(value ?? "").slice(0, 80) + "..."} />;
+        },
+      },
+      {
+        field: "actions",
+        headerName: translate("table.actions"),
+        sortable: false,
+        renderCell: function render({ row }) {
+          return (
+            <>
+              <EditButton hideText recordItemId={row.id} />
+              <ShowButton hideText recordItemId={row.id} />
+              <DeleteButton hideText recordItemId={row.id} />
+            </>
+          );
+        },
+        align: "center",
+        headerAlign: "center",
+        flex: 1,
+      },
+    ],
+    [translate, categoryData?.data]
+  );
+
+  return (
+    <List>
+      <DataGrid {...dataGridProps} columns={columns} autoHeight />
+    </List>
+  );
 };

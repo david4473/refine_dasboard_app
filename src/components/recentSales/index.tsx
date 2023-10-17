@@ -51,7 +51,7 @@ export function RecentSales() {
     () => [
       {
         field: "id",
-        headerName: "ID",
+        headerName: "id",
         width: 70,
       },
       {
