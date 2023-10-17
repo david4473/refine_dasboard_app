@@ -29,8 +29,6 @@ export const ProductShow: React.FC<IResourceComponentsProps> = () => {
     },
   });
 
-  console.log(record?.images?.url);
-
   return (
     <Show isLoading={isLoading}>
       <Stack gap={1}>
@@ -54,7 +52,7 @@ export const ProductShow: React.FC<IResourceComponentsProps> = () => {
           {translate("Images")}
         </Typography>
         <img
-          src={record?.images?.url}
+          src={record?.images[0].url}
           alt={record?.title}
           style={{ width: "300px", aspectRatio: "3/2", borderRadius: "5px" }}
           loading="lazy"
