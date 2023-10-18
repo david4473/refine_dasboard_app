@@ -102,7 +102,7 @@ function App() {
                         Title={({ collapsed }) => (
                           <ThemedTitleV2
                             collapsed={collapsed}
-                            text="refine MUI Project"
+                            text="Fine-food Dashboard"
                             icon={<AppIcon />}
                           />
                         )}

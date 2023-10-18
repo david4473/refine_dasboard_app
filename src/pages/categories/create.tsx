@@ -64,7 +64,7 @@ export const CategoryCreate: React.FC<IResourceComponentsProps> = () => {
           fullWidth
           InputLabelProps={{ shrink: true }}
           multiline
-          label={translate("categories.fields.cover")}
+          label={translate("cover")}
           name="cover"
         />
       </Box>

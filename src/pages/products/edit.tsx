@@ -95,43 +95,6 @@ export const ProductEdit: React.FC<IResourceComponentsProps> = () => {
           label={translate("Description")}
           name="description"
         />
-        <Box sx={{ display: "flex", gap: 1 }}>
-          {productsData?.images?.map((item: any, index: number) => (
-            <TextField
-              key={index}
-              {...register(`images.${index}.url`, {
-                required: "This field is required",
-              })}
-              error={!!(errors as any)?.images?.[index]}
-              helperText={(errors as any)?.images?.[index]?.message as string}
-              margin="normal"
-              fullWidth
-              InputLabelProps={{ shrink: true }}
-              multiline
-              label={translate("Images")}
-              name={`images.url.${index}`}
-            />
-          ))}
-        </Box>
-
-        {/*
-                    DatePicker component is not included in "@refinedev/mui" package.
-                    To use a <DatePicker> component, you can follow the official documentation for Material UI.
-
-                    Docs: https://mui.com/x/react-date-pickers/date-picker/#basic-usage
-                */}
-        <TextField
-          {...register("createdAt", {
-            required: "This field is required",
-          })}
-          error={!!(errors as any)?.createdAt}
-          helperText={(errors as any)?.createdAt?.message}
-          margin="normal"
-          fullWidth
-          InputLabelProps={{ shrink: true }}
-          label={translate("Created At")}
-          name="createdAt"
-        />
         <TextField
           {...register("price", {
             required: "This field is required",

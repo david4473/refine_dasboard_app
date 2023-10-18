@@ -77,24 +77,6 @@ export const ProductCreate: React.FC<IResourceComponentsProps> = () => {
           label={translate("description")}
           name="description"
         />
-        {/*
-                    DatePicker component is not included in "@refinedev/mui" package.
-                    To use a <DatePicker> component, you can follow the official documentation for Material UI.
-
-                    Docs: https://mui.com/x/react-date-pickers/date-picker/#basic-usage
-                */}
-        <TextField
-          {...register("createdAt", {
-            required: "This field is required",
-          })}
-          error={!!(errors as any)?.createdAt}
-          helperText={(errors as any)?.createdAt?.message}
-          margin="normal"
-          fullWidth
-          InputLabelProps={{ shrink: true }}
-          label={translate("Created At")}
-          name="createdAt"
-        />
         <TextField
           {...register("price", {
             required: "This field is required",

@@ -8,13 +8,10 @@ export const CategoryEdit: React.FC<IResourceComponentsProps> = () => {
   const translate = useTranslate();
   const {
     saveButtonProps,
-    refineCore: { queryResult },
     register,
     control,
     formState: { errors },
   } = useForm();
-
-  const categoriesData = queryResult?.data?.data;
 
   return (
     <Edit saveButtonProps={saveButtonProps}>
@@ -70,19 +67,6 @@ export const CategoryEdit: React.FC<IResourceComponentsProps> = () => {
               }
             />
           )}
-        />
-        <TextField
-          {...register("cover", {
-            required: "This field is required",
-          })}
-          error={!!(errors as any)?.cover}
-          helperText={(errors as any)?.cover?.message}
-          margin="normal"
-          fullWidth
-          InputLabelProps={{ shrink: true }}
-          multiline
-          label={translate("categories.fields.cover")}
-          name="cover"
         />
       </Box>
     </Edit>

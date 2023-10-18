@@ -8,7 +8,6 @@ import {
   NumberField,
   TextFieldComponent as TextField,
   BooleanField,
-  MarkdownField,
 } from "@refinedev/mui";
 import { Typography, Stack } from "@mui/material";
 
@@ -34,15 +33,6 @@ export const CategoryShow: React.FC<IResourceComponentsProps> = () => {
           {translate("isActive")}
         </Typography>
         <BooleanField value={record?.isActive} />
-        <Typography variant="body1" fontWeight="bold">
-          {translate("Cover")}
-        </Typography>
-        <img
-          src={record?.cover}
-          alt={record?.title}
-          style={{ width: "300px", aspectRatio: "3/2", borderRadius: "5px" }}
-          loading="lazy"
-        />
       </Stack>
     </Show>
   );

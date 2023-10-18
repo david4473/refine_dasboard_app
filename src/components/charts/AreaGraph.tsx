@@ -28,8 +28,6 @@ export const AreaGraph: React.FC<IAreaGraphProps> = ({
     value,
   }));
 
-  const { mode, setMode } = useContext(ColorModeContext);
-
   return (
     <ResponsiveContainer width="99%" aspect={3}>
       <AreaChart data={transformedData}>

@@ -49,15 +49,6 @@ export const ProductShow: React.FC<IResourceComponentsProps> = () => {
         </Typography>
         <MarkdownField value={record?.description} />
         <Typography variant="body1" fontWeight="bold">
-          {translate("Images")}
-        </Typography>
-        <img
-          src={record?.images[0].url}
-          alt={record?.title}
-          style={{ width: "300px", aspectRatio: "3/2", borderRadius: "5px" }}
-          loading="lazy"
-        />
-        <Typography variant="body1" fontWeight="bold">
           {translate("CreatedAt")}
         </Typography>
         <DateField value={record?.createdAt} />
