@@ -15,11 +15,7 @@ import i18n from "i18next";
 import React, { useContext } from "react";
 import { ColorModeContext } from "../../contexts/color-mode";
 
-type IUser = {
-  id: number;
-  name: string;
-  avatar: string;
-};
+import { IUser } from "../../interfaces";
 
 export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   sticky = true,

@@ -1,7 +1,3 @@
-export interface ICategory {
-    id: number;
-    title: string;
-}
 
 export type KpiCardProps = {
   title: string;
@@ -20,14 +16,6 @@ export type DeltaType =
   | "success"
   | "info";
 
-export interface IPost {
-    id: number;
-    title: string;
-    content: string;
-    status: "published" | "draft" | "rejected";
-    category: { id: number };
-}
-
 export interface IOrder {
     id: number;
     user: IUser;
@@ -37,24 +25,10 @@ export interface IOrder {
     amount: number;
   }
 
-  export interface IUser {
-    id: number;
-    fullName: string;
-    gender: string;
-    gsm: string;
-    createdAt: string;
-    addresses: IAddress[];
-  }
-
   
 export interface IOrderStatus {
     id: number;
     text: "Pending" | "Ready" | "On The Way" | "Delivered" | "Cancelled";
-  }
-
-  export interface IAddress {
-    text: string;
-    coordinate: [string, string];
   }
   
   export interface IChartDatum {
@@ -67,35 +41,12 @@ export interface IOrderStatus {
     total: number;
     trend: number;
   }
-  
-  export interface IProduct {
+
+  export type IUser = {
     id: number;
     name: string;
-    isActive: boolean;
-    description: string;
-    createdAt: string;
-    price: number;
-    category: ICategory;
-    stock: number;
-    images: IImage[];
-  }
-  
-  export interface IImage {
-    url: string;
-  }
-  
-  export interface ICategory {
-    id: number;
-    title: string;
-    isActive: boolean;
-    cover: string;
-  }
-  
-  
-  export interface IProductCategory {
-    value: number;
-    label: string;
-  }
+    avatar: string;
+  };
   
   interface IAreaGraphProps {
     data: IChartDatum[];

@@ -10,7 +10,6 @@ import {
 } from "recharts";
 
 import { IAreaGraphProps } from "../../interfaces";
-import { ColorModeContext } from "../../contexts/color-mode";
 
 export const formatDate = new Intl.DateTimeFormat("en-US", {
   month: "short",
