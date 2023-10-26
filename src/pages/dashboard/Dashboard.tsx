@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import KpiCard from "../../components/kpi-card";
 import { useApiUrl, useCustom } from "@refinedev/core";
 import dayjs from "dayjs";
 import { Box, Grid, Tab, Card, CardHeader, styled } from "@mui/material";
 import { TabContext } from "@mui/lab";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import KpiCard from "../../components/kpi-card";
 import { AreaGraph, BarChart } from "../../components/charts";
 import { RecentSales } from "../../components/recent-sales";
 
@@ -31,7 +31,7 @@ const formatCurrency = Intl.NumberFormat("en", {
   currency: "USD",
 });
 
-export function Dashboard({}) {
+export function Dashboard() {
   const API_URL = useApiUrl();
 
   const { data: revenue } = useCustom<IChart>({

@@ -15,7 +15,6 @@ import {
   useTranslate,
   useMany,
 } from "@refinedev/core";
-import { Checkbox } from "@mui/material";
 
 export const ProductList: React.FC<IResourceComponentsProps> = () => {
   const translate = useTranslate();
@@ -27,6 +26,11 @@ export const ProductList: React.FC<IResourceComponentsProps> = () => {
     queryOptions: {
       enabled: !!dataGridProps?.rows,
     },
+  });
+
+  const formatCurrency = Intl.NumberFormat("en", {
+    style: "currency",
+    currency: "USD",
   });
 
   const columns = React.useMemo<GridColDef[]>(
@@ -46,6 +50,9 @@ export const ProductList: React.FC<IResourceComponentsProps> = () => {
         field: "price",
         flex: 0.5,
         headerName: translate("Price"),
+        renderCell: function render({ value }) {
+          return formatCurrency.format(value);
+        },
       },
       {
         field: "category",
